@@ -33,7 +33,7 @@ const postLimit = 4;
                 }
 
                 const thisYear = entry.data.pubDate.getFullYear();
-                if (thisYear < year) {
+                if (thisYear < year && full) {
                     year = thisYear;
                     elems.push(
                         <li class="year">
@@ -67,7 +67,7 @@ const postLimit = 4;
     }
 
     .archive-indicator {
-        margin-top: 2rem;
+        margin-top: 1rem;
         align-self: center;
     }
 
