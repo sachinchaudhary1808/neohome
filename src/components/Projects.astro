@@ -1,0 +1,28 @@
+---
+import Project from "./Project.astro";
+
+import type { Props as PProps } from "./Project.astro";
+
+const projects: PProps[] = [
+    {
+        name: "nh",
+        shortDesc: "Nix CLI helper",
+        longDesc: "longdesc",
+        link: "https://github.com/viperML/nh",
+    },
+    {
+        name: "wrapper-manager",
+        shortDesc: "Post-modern configuration management",
+        longDesc: "longdesc",
+        link: "https://github.com/viperML/wrapper-manager"
+    }
+];
+---
+
+<h1>Projects</h1>
+
+{
+    projects.map(proj => {
+        return <Project  {...proj}/>;
+    })
+}
