@@ -7,22 +7,60 @@ const projects: PProps[] = [
     {
         name: "nh",
         shortDesc: "Nix CLI helper",
-        longDesc: "longdesc",
+        longDesc: `
+            nh is a rewrite in Rust of some tools of the NixOS ecosystem, that
+            improves the user experience, with a friendlier interface and providing
+            useful information to the user.
+        `,
         link: "https://github.com/viperML/nh",
     },
     {
         name: "wrapper-manager",
         shortDesc: "Post-modern configuration management",
-        longDesc: "longdesc",
-        link: "https://github.com/viperML/wrapper-manager"
-    }
+        longDesc: `
+            Nix library to configure applications through wrappers, instead of
+            impure config files from at ~/.config. Wrappers are portable, isolated
+            and composable.
+        `,
+        link: "https://github.com/viperML/wrapper-manager",
+    },
+    {
+        name: "noshell",
+        shortDesc: "User-configurable login shell",
+        longDesc: "blah",
+        link: "https://github.com/viperML/noshell"
+    },
+    {
+        name: "neoinfra",
+        shortDesc: "Infrastructure as code",
+        longDesc: `
+        `,
+        link: "https://github.com/viperML/neoinfra"
+    },
 ];
 ---
 
 <h1>Projects</h1>
 
-{
-    projects.map(proj => {
-        return <Project  {...proj}/>;
-    })
-}
+<div id="projects">
+    {
+        projects.map((proj) => {
+            return <Project {...proj} />;
+        })
+    }
+</div>
+
+<style lang="less">
+    h1 {
+        margin: 8px;
+        margin-bottom: 10px;
+    }
+
+    #projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+</style>

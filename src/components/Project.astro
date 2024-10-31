@@ -5,16 +5,28 @@ export interface Props {
     longDesc: string;
     link: string;
 }
+
+import { IconExternalLink } from "@tabler/icons-react";
 ---
 
-<div class="card">
-    <a href={Astro.props.link}>
-        <h2>
-            {Astro.props.name}
-        </h2>
+<a class="card" href={Astro.props.link}>
+    <div class="flex items-center place-content-between">
+        <h2>{Astro.props.name}</h2>
+        <IconExternalLink/>
+    </div>
 
-        <p>{Astro.props.shortDesc}</p>
-    </a>
-</div>
+    <span class="subtitle">{Astro.props.shortDesc}</span>
 
-<style lang="less"></style>
+    <p class="pt-3">{Astro.props.longDesc}</p>
+</a>
+
+<style lang="less">
+    a {
+        display: block;
+    }
+
+    .subtitle {
+        color: var(--text-color-alt);
+        font-weight: 500;
+    }
+</style>
