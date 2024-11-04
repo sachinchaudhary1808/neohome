@@ -6,41 +6,39 @@ import type { Props as PProps } from "./Project.astro";
 const projects: PProps[] = [
     {
         name: "nh",
-        shortDesc: "Nix CLI helper",
         longDesc: `
-            nh is a rewrite in Rust of some tools of the NixOS ecosystem, that
-            improves the user experience, with a friendlier interface and providing
-            useful information to the user.
+            Rust-rewrite of system administration tools for the NixOS ecosystem.
         `,
         link: "https://github.com/viperML/nh",
     },
     {
         name: "wrapper-manager",
-        shortDesc: "Post-modern configuration management",
         longDesc: `
-            Nix library to configure applications through wrappers, instead of
-            impure config files from at ~/.config. Wrappers are portable, isolated
-            and composable.
+            Framework for declarative configuration of application with wrapper
+            scripts.
         `,
         link: "https://github.com/viperML/wrapper-manager",
     },
     {
         name: "noshell",
-        shortDesc: "User-configurable login shell",
-        longDesc: "blah",
+        longDesc: `
+            Shim that loads a login shell selected by the user, even if not
+            present in /etc/shells.
+        `,
         link: "https://github.com/viperML/noshell"
     },
     {
         name: "neoinfra",
-        shortDesc: "Infrastructure as code",
         longDesc: `
+            Configuration for my servers, with Terraform, Cloudlfare, Nginx,
+            NixOS and others.
         `,
         link: "https://github.com/viperML/neoinfra"
     },
 ];
 ---
 
-<h1>Projects</h1>
+<h2>Projects</h2>
 
 <div id="projects">
     {
@@ -51,7 +49,7 @@ const projects: PProps[] = [
 </div>
 
 <style lang="less">
-    h1 {
+    h2 {
         margin: 8px;
         margin-bottom: 10px;
     }
