@@ -31,6 +31,7 @@ There are already multiple abstractions that wrap Neovim:
 - [NixNeovim](https://github.com/NixNeovim/NixNeovim)
 - [Nvf](https://github.com/NotAShelf/nvf)
 - [Minimal Neovim Wrapper](https://github.com/Gerg-L/mnw)
+- [nixCats-nvim](https://github.com/BirdeeHub/nixCats-nvim) (the worst)
 
 In face of so many alternatives, my answer: I don't think they are good. The
 fundamental issue with all of them is that you completely miss how the plugins
