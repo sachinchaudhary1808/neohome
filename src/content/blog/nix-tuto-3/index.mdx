@@ -1,0 +1,32 @@
+---
+title: "The Nix lectures, part 3: Module System"
+pubDate: 2024-11-08T09:00:28Z
+draft: true
+summary: |
+  From builtins.derivation to stdenv.mkDerivation, and the language-specific
+  builders. All you need to know to start packaging software with Nix.
+slug: nix-tuto-3
+---
+
+I've been writing a tutorial series that tries to cover the entirety of Nix.
+What you are reading now is part 3, where we will discuss the Nix module system.
+
+import NixTuto from "../../../components/NixTuto.astro";
+
+<NixTuto/>
+
+
+## What is the module system?
+
+The module system is a Nix library / framework that enables Nix to be used as a
+configuration language. While it is possible to write your own abstractions, the
+module system is the de-facto way to expose API's for users to configure.
+
+Some of the functions provided by the module system are:
+
+- Exposing a configuration API for users, with options that can have a value
+- Type-check the configuration values
+- Centralize the documentation of options
+- Threading configuration values to be used as dependencies of others
+
+## From the user's perspective
