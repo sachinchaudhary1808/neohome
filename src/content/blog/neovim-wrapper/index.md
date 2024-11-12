@@ -128,7 +128,7 @@ convention of other Nix projects, we will use 2 files:
 let
   pkgs = import <nixpkgs> {};
 in
-  pkgs.callPackage ./neovim.nix {};
+  pkgs.callPackage ./neovim.nix {}
 ```
 
 ```nix file: "neovim-1.nix"
