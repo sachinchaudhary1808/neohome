@@ -142,3 +142,11 @@ And if you are the TS developer that is behind after all of this packaging, [Lin
 
 If you are interested in all of these findings, I've put some packaging for Nix in [https://github.com/viperML/tree-sitter](https://github.com/viperML/tree-sitter).
 It's mostly stuff that I use for myself, but get in contact with me if you want to use it or make it more user-friendly.
+
+
+## Update in October 2024
+
+All grammars just changed from using NPM's `package.json` for storing their
+metadata, to using a new `tree-sitter.json` [changes in tree-sitter-cpp](https://github.com/tree-sitter/tree-sitter-cpp/commit/96cc3bd0610a9c1fc716adddad946e2167513bdf).
+
+Time to change all my build systems -- hopefully they keep this new system and don't change it again...
