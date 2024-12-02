@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 
 import author from "./author.jpg";
 
-import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
+import { IconBrandLinkedin, IconBrandGithub, IconMail } from "@tabler/icons-react";
 ---
 
 <div id="profile">
@@ -46,6 +46,9 @@ import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
     <a class="card" href="https://linkedin.com/in/ayatsfer">
         <IconBrandLinkedin className="bento-icon" />
     </a>
+    <a class="card" href="mailto:ayatsfer+neohome@gmail.com">
+        <IconMail className="bento-icon" />
+    </a>
 </div>
 
 <style lang="less">
@@ -68,6 +71,10 @@ import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
     #bento-photo {
         grid-column: span 2;
         grid-row: span 2;
+
+        @media(min-width: 600px) {
+            grid-column: span 2;
+        }
     }
 
     #bento-info {
@@ -75,7 +82,7 @@ import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
         grid-row: span 2;
 
         @media (min-width: 600px) {
-            grid-column: span 4;
+            grid-column: span 5;
         }
     }
 
