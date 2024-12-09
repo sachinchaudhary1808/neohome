@@ -15,16 +15,7 @@ const webringURL = "https://nixwebr.ing";
 >
     <Centered class:list={["test"]}>
         <div class="box">
-            <h2>Nix Webring</h2>
-
-            <p>You found the Nix webring!</p>
-
-            <ul class="webring-control">
-                <li><a href=`${webringURL}/prev/${webringSite}`>←</a></li>
-                <li><a href={webringURL}>Home Page</a></li>
-                <li><a href=`${webringURL}/rand`>🎲</a></li>
-                <li><a href=`${webringURL}/next/${webringSite}`>→</a></li>
-            </ul>
+            Some experiments
 
             <div id="my-canvas"></div>
         </div>
@@ -80,19 +71,6 @@ const webringURL = "https://nixwebr.ing";
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .webring-control {
-        display: flex;
-        flex-direction: row;
-        padding: 10px 0;
-        gap: 10px;
-
-        & a {
-            border-radius: 6px;
-            background-color: var(--elem-neutral);
-            padding: 10px;
-        }
     }
 
     #my-canvas {
