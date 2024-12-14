@@ -223,15 +223,27 @@ day4part2 input = do
 
 By this time, I found some other posts about people using Haskell for AoC, and
 found about the `Comonad` class, implemented by `Store`. They used the
-properties of `Comonad`, which are the following:
+properties of `Comonad`, which are the following (simplified).
 
 ```haskell
+class Monad m where
+    return :: a -> m a
+    (>>=) :: m a -> (a -> m b) -> m b
 
+class Comonad w where
+    extract :: w a -> a
+    extend :: (w a -> b) -> w a -> w b
 ```
 
-Having a `Store` of points allows you to also define a function from Store of
-points to check if there is a cross, and the extend this function to get a Store
-of checks. Neat!
+Similarly to `Monad`, but reverse, `extend` takes a function of a wrapped value
+to a value (the opposite of bind), and `extract` is the opposite operation of
+`return`.
+
+Having a `Store` that implements `Comonads`, allows you to:
+
+- Extract the central value of the Store (which can be sought).
+- Apply a function that takes a `Store` of points to check if it is a cross, and
+  then extend it to all possible values.
 
 ## Day 5: More parsing
 
