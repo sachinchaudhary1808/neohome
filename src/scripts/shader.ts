@@ -21,12 +21,12 @@ camera.position.z = 1;
 const scene = new THREE.Scene();
 
 // const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-const geometry = new THREE.IcosahedronGeometry(0.2, 0);
+const geometry = new THREE.IcosahedronGeometry(0.2, 1);
 // const material = new THREE.ShaderMaterial();
 const material = new THREE.ShaderMaterial({
     vertexShader: _vert,
     fragmentShader: _frag,
-    wireframe: true,
+    // wireframe: true,
 });
 
 
