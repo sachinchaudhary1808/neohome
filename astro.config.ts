@@ -9,6 +9,7 @@ import arraybuffer from "vite-plugin-arraybuffer";
 import mdx from '@astrojs/mdx';
 import { remarkMark } from 'remark-mark-highlight'
 import rehypeSectionHeadings from "@maxmmyron/rehype-section-headings";
+import glsl from 'vite-plugin-glsl';
 
 import { remarkCodeMeta } from './src/remark';
 
@@ -60,7 +61,8 @@ export default defineConfig({
       "**/*.node"
     ],
     plugins: [
-      arraybuffer()
+      arraybuffer(),
+      glsl(),
     ],
     ssr: {
       external: ["neohome-rs"]
