@@ -7,7 +7,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "types": [
-      "vite-plugin-arraybuffer/types"
+      "vite-plugin-arraybuffer/types",
+      "vite-plugin-glsl/ext"
     ]
   },
   "mdx": {
