@@ -1,8 +1,10 @@
 import * as THREE from "three";
 
+
 import _frag from "./test.frag";
 import _vert from "./test.vert";
 
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // const geometry = new THREE.IcosahedronGeometry(1, 5);
 // const material = new THREE.MeshStandardMaterial();
@@ -35,8 +37,7 @@ scene.add(mesh);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(width, height);
-renderer.setAnimationLoop(animate);
-// document.body.appendChild(renderer.domElement);
+document.body.appendChild(renderer.domElement);
 const elem = document.getElementById("my-canvas");
 if (elem !== null) {
     elem.appendChild(renderer.domElement);
@@ -44,9 +45,26 @@ if (elem !== null) {
 
 // animation
 
-function animate(time: number) {
-    mesh.rotation.x = time / 2000;
-    mesh.rotation.y = time / 1000;
+// function animate(time: number) {
+//     mesh.rotation.x = time / 2000;
+//     mesh.rotation.y = time / 1000;
 
+//     renderer.render(scene, camera);
+// }
+
+
+renderer.setAnimationLoop(animate);
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.enableDamping = true
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.update();
+// camera.position.set(0, 20, 100);
+
+function animate() {
+    requestAnimationFrame(animate); // required if controls.enableDamping or controls.autoRotate are set to true
+    controls.update();
     renderer.render(scene, camera);
 }
+
+// renderer.render(scene, camera);
