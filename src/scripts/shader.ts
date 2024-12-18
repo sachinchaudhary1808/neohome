@@ -59,16 +59,16 @@ if (elem !== null) {
 
 
 renderer.setAnimationLoop(animate);
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.enableDamping = true
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.enableDamping = true
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 // controls.update();
 // camera.position.set(0, 20, 100);
 
 function animate() {
-    requestAnimationFrame(animate); // required if controls.enableDamping or controls.autoRotate are set to true
-    controls.update();
+    // requestAnimationFrame(animate); // required if controls.enableDamping or controls.autoRotate are set to true
+    // controls.update();
     renderer.render(scene, camera);
     mesh.material.uniforms.uTime = {value: performance.now()};
 }
