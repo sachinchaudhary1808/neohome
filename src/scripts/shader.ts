@@ -31,10 +31,14 @@ const material = new THREE.ShaderMaterial({
     vertexShader: _vert,
     fragmentShader: _frag,
     // wireframe: true,
+    uniforms: {
+        uTime: { value: performance.now() },
+    }
 });
 
 
 const mesh = new THREE.Mesh(geometry, material);
+
 scene.add(mesh);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -67,6 +71,7 @@ function animate() {
     // requestAnimationFrame(animate); // required if controls.enableDamping or controls.autoRotate are set to true
     // controls.update();
     renderer.render(scene, camera);
+    mesh.material.uniforms.uTime = {value: performance.now()};
 }
 
 // renderer.render(scene, camera);
