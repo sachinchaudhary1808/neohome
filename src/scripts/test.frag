@@ -3,9 +3,11 @@ varying vec3 vNormal;
 varying vec2 vUv;
 
 void main() {
-	vec3 c = normalize(cameraPosition - vPosition);
-	float fresnel = 1. - dot(c, vNormal);
+	float fresnel = dot(normalize(cameraPosition - vPosition), vNormal);
 
-	// gl_FragColor = vec4(c, 1.0);
-	gl_FragColor = vec4(vec3(fresnel), 1.0);
+	vec3 c = vec3(vUv.x, vUv.y, 1.);
+	c -= 1. - vec3(fresnel);
+
+	// gl_FragColor = vec4(vUv, vec2(1., 1.));
+	gl_FragColor = vec4(c.x, c.y, c.z, 1.);
 }
