@@ -45,6 +45,7 @@
         "typescript"
         "css"
         "haskell"
+        "glsl"
       ])
       inputs.tree-sitter.legacyPackages.${system}.grammars.all));
   in {
