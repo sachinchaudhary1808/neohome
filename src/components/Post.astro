@@ -28,7 +28,7 @@ import { formatDate } from "../date";
             {formatDate(post.data.pubDate)}
         </p>
 
-        <p>
+        <p class="post-summary">
             {post.data.summary}
         </p>
     </a>
@@ -38,9 +38,13 @@ import { formatDate } from "../date";
     .post-container {
         display: grid;
         grid-template-rows: auto auto;
-        grid-template-columns: auto max-content;
+        grid-template-columns: auto;
         align-items: top;
         column-gap: 1rem;
+
+        @media(min-width: 600px) {
+            grid-template-columns: auto max-content;
+        }
     }
 
     .post-container.draft {
@@ -49,5 +53,11 @@ import { formatDate } from "../date";
 
     p {
         color: var(--text-color-alt);
+    }
+
+    .post-summary {
+        @media(max-width: 600px) {
+            padding-top: 10px;
+        }
     }
 </style>
