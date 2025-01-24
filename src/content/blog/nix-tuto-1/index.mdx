@@ -411,8 +411,8 @@ x: x.foo + x.bar
 { foo, bar }: foo + bar
 ```
 
-To accept multiple argument, it is also possible to use *functions that return
-functions*. In the following example, the outer function return another
+To accept multiple arguments, it is also possible to use *functions that return
+functions*. In the following example, the outer function returns another
 function. So you can apply it *twice* to get the final value:
 
 ```nix
@@ -469,14 +469,14 @@ functions, is that Nix displays them as `lambda`:
 
 ## Compound expressions
 
-One of the key insights to understanding Nix's syntax, is that everything is an
-expression. Expressions can be nested into another. Unlike a regular language,
+One of the key insights to understanding Nix's syntax is that everything is an
+expression. Expressions can be nested with one another. Unlike a regular language,
 there are no "statements" in Nix. Statements run one after the other.
 
-An statement would imply multiple values. In contrast, in Nix we have a single
-expression, that evaluates from the bottom.
+A statement would imply multiple values. In contrast, in Nix we have a single
+expression that evaluates from the bottom up.
 
-One way to visualize this, is by adding parenthesis for every expression:
+One way to visualize this is by adding parenthesis for every expression:
 
 ```nix
 # Given the following expression:
@@ -490,7 +490,7 @@ One way to visualize this, is by adding parenthesis for every expression:
 [ 1 ] ++ [ { foo = (expr); } ]
 ```
 
-In the following sections, we will look at some of the special syntax that nix
+In the following sections, we will look at some of the special syntax that Nix
 has, that prefixes expressions.
 
 ### if-then-else
@@ -516,7 +516,7 @@ as return values of functions or anything more or less complex:
   config = if useCuda then "cuda" else "noCuda";
 
   # using parenthesis to visualize the expressions
-  config' = (if (useCuda) then ("cuda") else ("noCuda");
+  config' = (if (useCuda) then ("cuda") else ("noCuda"));
 }
 ```
 
@@ -614,7 +614,9 @@ let y = 2; in {
   x = 1;
   z = y + 2;
 }
-
+```
+```nix
+# bar.nix
 import ./foo.nix
 #=> { x = 1; z = 4; }
 ```
