@@ -12,15 +12,7 @@ document.addEventListener("astro:page-load", () => {
 function doToc(toc: HTMLElement) {
     const titles = new Map();
 
-    // ugly hack :^)
-    // reverse children, so priority is for the last visible TOC element
-    // but push first element so it takes priority over the 2nd element
-    const toc_children = Array.from(toc.children);
-    // @ts-expect-error The TOC will always have >1 elements
-    toc_children.push(toc_children[0])
-    toc_children.reverse();
-
-    toc_children.forEach(node => {
+    Array.from(toc.children).forEach(node => {
         if (!(node instanceof HTMLElement)) {
             return;
         }
