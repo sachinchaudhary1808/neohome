@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "tree-sitter",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1722555600,
-        "narHash": "sha256-XOQkdLafnb/p9ij77byFQjDf5m5QYl9b2REiVClC+x4=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "8471fe90ad337a8074e957b69ca4d0089218391d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1717974879,
@@ -39,29 +18,7 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "tree-sitter": "tree-sitter"
-      }
-    },
-    "tree-sitter": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1724261719,
-        "narHash": "sha256-q2ykb8p8OhSVHysnVeMgFakv6xtbS92CpNVaNn2jXU0=",
-        "owner": "viperML",
-        "repo": "tree-sitter",
-        "rev": "ce2d71c25526a8477cf560df036c5c5243d30d36",
-        "type": "github"
-      },
-      "original": {
-        "owner": "viperML",
-        "repo": "tree-sitter",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },

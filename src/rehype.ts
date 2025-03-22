@@ -4,16 +4,12 @@ import { visit } from "unist-util-visit";
 import type { Element } from "hast";
 import type { Plugin } from "unified";
 import type { Estimation } from 'lesetid';
-import type { InferEntrySchema } from "astro:content";
+// import type { InferEntrySchema } from "astro:content";
 
 import { fromHtml } from 'hast-util-from-html'
 
 import IconCopy from "@tabler/icons/outline/copy.svg?raw";
 import IconCopyCheckFilled from "@tabler/icons/filled/copy-check.svg?raw";
-
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const { highlight } = require("neohome-rs");
 
 import { formatDate } from "./date";
 
@@ -54,44 +50,6 @@ function getLanguage(classes: unknown | (string | number)[]): string | undefined
     return;
 }
 
-// Highlights code block with tree-sitter
-export function rehypeTreeSitter(): (tree: Root) => void {
-    return function (tree: Root) {
-        visit(tree, "element", node => {
-            if (node.tagName === "pre") {
-                visit(node, "element", subNode => {
-                    if (subNode.tagName == "code") {
-                        const language = getLanguage(subNode.properties.className);
-                        if (language === undefined) {
-                            return;
-                        }
-
-                        // @ts-ignore
-                        const oldText = subNode.children[0].value;
-
-                        const res = highlight(oldText, language);
-
-                        if (res === null) {
-                            console.log("Failed to highlight some", language);
-                            return;
-                        } else {
-                            console.log("Highlighted some", language);
-                        }
-
-                        const parsed = fromHtml(res, {
-                            fragment: true,
-                        }).children[0];
-                        // console.log(parsed);
-
-                        // @ts-ignore
-                        node.children = [parsed];
-                    }
-                });
-
-            }
-        });
-    }
-}
 
 
 // Adds hrefs to titles

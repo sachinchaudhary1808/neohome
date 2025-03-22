@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import remarkLesetid from "remark-lesetid/astro";
-import { rehypeTitles, rehypeCodeCopy, rehypePreClass, rehypeTreeSitter, rehypeH1 } from './src/rehype';
+import { rehypeTitles, rehypeCodeCopy, rehypePreClass, rehypeH1 } from './src/rehype';
 import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import { remarkAlert } from 'remark-github-blockquote-alert';
 import react from "@astrojs/react";
@@ -44,7 +44,6 @@ export default defineConfig({
       rehypeTitles,
       rehypeCodeCopy,
       rehypePreClass,
-      rehypeTreeSitter,
       [
         rehypeSectionHeadings,
         {
