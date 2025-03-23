@@ -8,9 +8,9 @@ import {
 } from "./src/rehype";
 import {
   rehypeHeadingIds,
-  rehypeShiki,
   type ShikiConfig,
 } from "@astrojs/markdown-remark";
+import rehypeShiki from '@shikijs/rehype'
 import { remarkAlert } from "remark-github-blockquote-alert";
 import react from "@astrojs/react";
 import arraybuffer from "vite-plugin-arraybuffer";
