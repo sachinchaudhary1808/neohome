@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
 import remarkLesetid from "remark-lesetid/astro";
 import { rehypeTitles, rehypeCodeCopy, rehypePreClass, rehypeH1 } from './src/rehype';
 import { rehypeHeadingIds, rehypeShiki, type ShikiConfig } from '@astrojs/markdown-remark';
@@ -9,7 +8,8 @@ import arraybuffer from "vite-plugin-arraybuffer";
 import mdx from '@astrojs/mdx';
 import { remarkMark } from 'remark-mark-highlight'
 import rehypeSectionHeadings from "@maxmmyron/rehype-section-headings";
-import glsl from 'vite-plugin-glsl';
+import tailwindcss from "@tailwindcss/vite";
+
 
 import { remarkCodeMeta } from './src/remark';
 
@@ -19,9 +19,9 @@ export default defineConfig({
   // https://docs.astro.build/en/reference/configuration-reference/
   integrations: [
     mdx(),
-    tailwind({
-      applyBaseStyles: false
-    }),
+    // tailwind({
+    //   applyBaseStyles: false
+    // }),
     react()
   ],
   devToolbar: {
@@ -71,16 +71,15 @@ export default defineConfig({
     format: "file",
   },
   vite: {
-    assetsInclude: [
-      "**/*.node"
-    ],
     plugins: [
       arraybuffer(),
-      glsl(),
+      tailwindcss(),
     ],
-    ssr: {
-      external: ["neohome-rs"]
-    },
+    optimizeDeps: {
+      exclude: [
+        "@resvg/resvg-js"
+      ],
+    }
   },
   trailingSlash: "never"
 });

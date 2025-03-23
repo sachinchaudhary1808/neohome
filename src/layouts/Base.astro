@@ -1,7 +1,8 @@
 ---
+import "../styles/base.css";
+import "../styles/base.less";
 import NavBar from "../components/NavBar.astro";
 import "../styles/color.less";
-import "../styles/base.less";
 import "../styles/main.less";
 
 import "../styles/alert.less";
@@ -28,8 +29,6 @@ import { ViewTransitions } from "astro:transitions";
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <ViewTransitions />
-
     <slot name="head" />
 
     <SEO {...Astro.props.seo} />
@@ -39,7 +38,9 @@ import { ViewTransitions } from "astro:transitions";
     <NavBar class="col-span-full row-span-1" />
 
     <slot />
-  </body><script is:inline>
+  </body>
+
+  <script is:inline>
     window.loadTheme = function (document) {
       const theme = (() => {
         const saved = localStorage.getItem("theme");
