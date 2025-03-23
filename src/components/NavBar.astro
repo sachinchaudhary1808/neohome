@@ -29,12 +29,8 @@ const { class: className } = Astro.props;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    background-color: rgba(241, 241, 241, 0.9);
+    background-color: light-dark(rgba(241, 241, 241, 0.9), rgba(0, 0, 0, 0.8));
     border-bottom: 1px solid var(--elem-neutral);
-
-    :is(.dark &) {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
   }
 
   nav {

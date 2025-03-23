@@ -59,6 +59,7 @@ export default defineConfig({
             dark: "github-dark",
             light: "github-light",
           },
+          defaultColor: false,
         } as ShikiConfig,
       ],
       rehypePreClass,

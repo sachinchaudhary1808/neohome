@@ -1,13 +1,28 @@
-const toggle = document.getElementById("themeToggle");
+document.getElementById("themeToggle")?.addEventListener("click", () => {
+  const theme = localStorage.getItem("theme") as "dark" | "light" | null;
 
-if (toggle !== null) {
-  toggle.onclick = () => {
-    document.documentElement.classList.toggle("dark");
+  const newTheme = (() => {
+    if (theme === null) {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        // Prefers dark, switch to light
+        return "light";
+      } else {
+        return "dark";
+      }
+    } else if (theme === "light") {
+      return "dark";
+    } else {
+      return "light";
+    }
+  })();
 
-    const isDark = document.documentElement.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+  localStorage.setItem("theme", newTheme);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).loadTheme(document);
-  };
-}
+  console.log("Theme set to =>", newTheme);
+
+  // @ts-expect-error loadTheme wasn't loaded
+  globalThis.loadTheme();
+});

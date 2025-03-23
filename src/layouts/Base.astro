@@ -37,47 +37,43 @@ export interface Props {
     <NavBar class="col-span-full row-span-1" />
 
     <slot />
-  </body><script is:inline>
+  </body><!-- Scripts: -->
+  <script is:inline>
     // @ts-check
 
-    /**
-     * @param {Document} document
-     */
-    function loadTheme(document) {
-      const theme = (() => {
-        const saved = localStorage.getItem("theme");
-        if (saved !== null) {
-          return saved;
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    globalThis.loadTheme = function () {
+      const html = /** @type {HTMLHtmlElement} */ (
+        document.querySelector("html")
+      );
+      const storedTheme = /** @type {"dark" | "light" | null} */ (
+        localStorage.getItem("theme")
+      );
+
+      const prefers = (() => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           return "dark";
         } else {
           return "light";
         }
       })();
 
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
+      if (prefers === "dark" && storedTheme === "light") {
+        html.style.setProperty("color-scheme", "light");
       }
-      document.documentElement.classList.add("theme-loaded");
+      if (prefers === storedTheme) {
+        html.style.removeProperty("color-scheme");
+      }
+      if (prefers === "light" && storedTheme === "dark") {
+        html.style.setProperty("color-scheme", "dark");
+      }
+    };
 
-      localStorage.setItem("theme", theme);
-      console.log("Swapping theme =>", theme);
-    }
+    window.addEventListener("pagereveal", (e) => {
+      console.log("pagereveal triggered ", e);
+      globalThis.loadTheme();
+    });
 
-    window.addEventListener(
-      "pagereveal",
-      (e) => {
-        console.log(e);
-        console.log("pagereveal");
-        loadTheme(document);
-      },
-      false
-    );
-
-    loadTheme(document);
-    console.log("Loaded");
+    globalThis.loadTheme();
   </script>
 
   <script src="../scripts/theme-switch.ts"></script>

@@ -90,11 +90,7 @@ const { headings } = Astro.props;
       font-size: 0.9rem;
       font-weight: 500;
 
-      background-color: rgb(227, 227, 227);
-
-      :is(.dark &) {
-        background-color: rgb(28, 28, 28);
-      }
+      background-color: light-dark( rgb(227, 227, 227), rgb(28, 28, 28));
 
     //   @media (min-width: @sidebar-thr) {
         display: block;
