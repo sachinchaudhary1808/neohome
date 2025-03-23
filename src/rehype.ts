@@ -25,10 +25,10 @@ export function rehypePreClass(): (tree: Root) => void {
     return function (tree: Root) {
         visit(tree, "element", node => {
             if (node.tagName === "pre") {
-                if (node.properties.class === undefined) {
-                    node.properties.class = "";
+                if (!Array.isArray(node.properties.className)) {
+                    node.properties.className = [];
                 }
-                (node.properties.class as string) += " card";
+                node.properties.className.push("card");
             }
         });
     }

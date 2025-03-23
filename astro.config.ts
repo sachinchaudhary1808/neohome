@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import remarkLesetid from "remark-lesetid/astro";
 import { rehypeTitles, rehypeCodeCopy, rehypePreClass, rehypeH1 } from './src/rehype';
-import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import { rehypeHeadingIds, rehypeShiki, type ShikiConfig } from '@astrojs/markdown-remark';
 import { remarkAlert } from 'remark-github-blockquote-alert';
 import react from "@astrojs/react";
 import arraybuffer from "vite-plugin-arraybuffer";
@@ -32,6 +32,12 @@ export default defineConfig({
   markdown: {
     gfm: true,
     syntaxHighlight: false,
+    // shikiConfig: {
+    //   // theme: 'github-dark',
+    //     light: "github-light",
+    //     dark: "ayu-dark",
+    //   }
+    // },
     remarkPlugins: [
       remarkMark,
       remarkAlert,
@@ -43,6 +49,15 @@ export default defineConfig({
       rehypeHeadingIds,
       rehypeTitles,
       rehypeCodeCopy,
+      [
+        rehypeShiki,
+        {
+          themes: {
+            dark: "github-dark",
+            light: "github-light",
+          },
+        } as ShikiConfig
+      ],
       rehypePreClass,
       [
         rehypeSectionHeadings,
