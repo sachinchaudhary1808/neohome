@@ -3,8 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build"
+    "dev": "astro dev --force",
+    "build": "astro check --force && astro build"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

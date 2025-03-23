@@ -3,8 +3,6 @@ import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 import type { Element } from "hast";
 import type { Plugin } from "unified";
-import type { Estimation } from 'lesetid';
-// import type { InferEntrySchema } from "astro:content";
 
 import { fromHtml } from 'hast-util-from-html'
 
@@ -25,32 +23,15 @@ export function rehypePreClass(): (tree: Root) => void {
     return function (tree: Root) {
         visit(tree, "element", node => {
             if (node.tagName === "pre") {
-                if (!Array.isArray(node.properties.className)) {
-                    node.properties.className = [];
+                if (typeof node.properties.class === "string") {
+                    node.properties.class += " card"
+                } else {
+                    console.warn("pre element doesn't have class", node.properties);
                 }
-                node.properties.className.push("card");
             }
         });
     }
 }
-
-function getLanguage(classes: unknown | (string | number)[]): string | undefined {
-    if (!Array.isArray(classes)) {
-        return;
-    }
-
-    for (const c of classes) {
-        if (typeof c === "string") {
-            if (c.startsWith("language-")) {
-                return c.replace("language-", "");
-            }
-        }
-    }
-
-    return;
-}
-
-
 
 // Adds hrefs to titles
 export function rehypeTitles(): (tree: Root) => void {

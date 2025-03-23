@@ -6,8 +6,6 @@ const posts = (await getCollection("blog")).filter(
   (post) => !(post.data.draft === true),
 );
 
-import sanitizeHTML from "sanitize-html";
-
 const header = '<?xml version="1.0" encoding="UTF-8"?>';
 ---
 

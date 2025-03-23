@@ -1,12 +1,9 @@
 ---
-import { Image } from "astro:assets";
-
 interface Props {
     class?: string;
     file?: string;
 }
 
-import icon from "./dark-theme-svgrepo-com.svg";
 import { IconFileRss, IconBrightness } from "@tabler/icons-react";
 
 const { class: className, file } = Astro.props;
@@ -15,7 +12,6 @@ const date = new Date();
 
 const commit: string | undefined = import.meta.env.GIT_COMMIT;
 
-const branch = "astro";
 const baseUrlShort = "viperML/neohome";
 const baseUrl = `https://github.com/${baseUrlShort}`;
 

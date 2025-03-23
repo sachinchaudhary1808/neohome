@@ -1,87 +1,88 @@
-document.addEventListener("astro:page-load", () => {
-    const toc = document.getElementById("toc");
-    if (toc === null) {
-        return;
-    } else {
-        doToc(toc);
-    }
-})
-
-
-
 function doToc(toc: HTMLElement) {
-    const titles = new Map();
+  const titles = new Map();
 
-    Array.from(toc.children).forEach(node => {
-        if (!(node instanceof HTMLElement)) {
-            return;
+  Array.from(toc.children).forEach((node) => {
+    if (!(node instanceof HTMLElement)) {
+      return;
+    }
+
+    const slug = node.dataset.slug;
+    if (slug === undefined) {
+      return;
+    }
+
+    titles.set(slug, false);
+  });
+
+  let activeSlug: string | null = null;
+
+  const updateTitles = () => {
+    for (const [slug, active] of titles) {
+      if (active) {
+        if (activeSlug === slug) {
+          break;
+        }
+        const li = document.querySelectorAll(`[data-slug="${slug}"]`)[0];
+        if (li === undefined) {
+          console.warn("li undefined");
+          break;
         }
 
-        const slug = node.dataset.slug;
-        if (slug === undefined) { return; }
+        li.classList.add("active");
 
-        titles.set(slug, false);
-    })
-
-    let activeSlug: string | null = null;
-
-    const updateTitles = () => {
-        for (const [slug, active] of titles) {
-            if (active) {
-                if (activeSlug === slug) {
-                    break;
-                }
-                const li = document.querySelectorAll(`[data-slug="${slug}"]`)[0];
-                if (li === undefined) {
-                    console.warn("li undefined");
-                    break;
-                }
-
-                li.classList.add("active");
-
-
-                if (activeSlug !== null) {
-                    const activeLi = document.querySelectorAll(`[data-slug="${activeSlug}"]`)[0];
-                    if (activeLi === undefined) {
-                        break;
-                    }
-                    activeLi.classList.remove("active");
-                }
-
-                activeSlug = slug;
-
-                break;
-            }
+        if (activeSlug !== null) {
+          const activeLi = document.querySelectorAll(
+            `[data-slug="${activeSlug}"]`
+          )[0];
+          if (activeLi === undefined) {
+            break;
+          }
+          activeLi.classList.remove("active");
         }
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!(entry.target instanceof HTMLElement)) {
-                return;
-            }
+        activeSlug = slug;
 
-            const slug = entry.target.dataset.headingId;
-            // console.log(slug, entry.isIntersecting, entry.intersectionRatio);
+        break;
+      }
+    }
+  };
 
-            if (slug === undefined) {
-                return;
-            }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!(entry.target instanceof HTMLElement)) {
+          return;
+        }
 
-            titles.set(slug, entry.isIntersecting);
-            // console.log(titles);
+        const slug = entry.target.dataset.headingId;
+        // console.log(slug, entry.isIntersecting, entry.intersectionRatio);
 
+        if (slug === undefined) {
+          return;
+        }
 
-            updateTitles();
-        })
-    }, {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-    });
+        titles.set(slug, entry.isIntersecting);
+        // console.log(titles);
 
-    titles.forEach((_, slug) => {
-        const section = document.querySelectorAll(`[data-heading-id="${slug}"]`)[0];
-        if (section === undefined) { return; }
+        updateTitles();
+      });
+    },
+    {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+    }
+  );
 
-        observer.observe(section);
-    });
+  titles.forEach((_, slug) => {
+    const section = document.querySelectorAll(`[data-heading-id="${slug}"]`)[0];
+    if (section === undefined) {
+      return;
+    }
+
+    observer.observe(section);
+  });
+}
+
+const toc = document.getElementById("toc");
+if (toc !== null) {
+  doToc(toc);
 }

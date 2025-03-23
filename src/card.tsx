@@ -1,4 +1,3 @@
-import type { ReactElement } from "react";
 import satori from "satori";
 
 import { Resvg } from "@resvg/resvg-js";
