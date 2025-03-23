@@ -1,17 +1,25 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import remarkLesetid from "remark-lesetid/astro";
-import { rehypeTitles, rehypeCodeCopy, rehypePreClass, rehypeH1 } from './src/rehype';
-import { rehypeHeadingIds, rehypeShiki, type ShikiConfig } from '@astrojs/markdown-remark';
-import { remarkAlert } from 'remark-github-blockquote-alert';
+import {
+  rehypeTitles,
+  rehypeCodeCopy,
+  rehypePreClass,
+  rehypeH1,
+} from "./src/rehype";
+import {
+  rehypeHeadingIds,
+  rehypeShiki,
+  type ShikiConfig,
+} from "@astrojs/markdown-remark";
+import { remarkAlert } from "remark-github-blockquote-alert";
 import react from "@astrojs/react";
 import arraybuffer from "vite-plugin-arraybuffer";
-import mdx from '@astrojs/mdx';
-import { remarkMark } from 'remark-mark-highlight'
+import mdx from "@astrojs/mdx";
+import { remarkMark } from "remark-mark-highlight";
 import rehypeSectionHeadings from "@maxmmyron/rehype-section-headings";
 import tailwindcss from "@tailwindcss/vite";
 
-
-import { remarkCodeMeta } from './src/remark';
+import { remarkCodeMeta } from "./src/remark";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,12 +30,12 @@ export default defineConfig({
     // tailwind({
     //   applyBaseStyles: false
     // }),
-    react()
+    react(),
   ],
   devToolbar: {
-    enabled: false
+    enabled: false,
   },
-  output: 'static',
+  output: "static",
   site: "https://ayats.org",
   markdown: {
     gfm: true,
@@ -38,12 +46,7 @@ export default defineConfig({
     //     dark: "ayu-dark",
     //   }
     // },
-    remarkPlugins: [
-      remarkMark,
-      remarkAlert,
-      remarkLesetid,
-      remarkCodeMeta
-    ],
+    remarkPlugins: [remarkMark, remarkAlert, remarkLesetid, remarkCodeMeta],
     rehypePlugins: [
       rehypeH1,
       rehypeHeadingIds,
@@ -56,14 +59,14 @@ export default defineConfig({
             dark: "github-dark",
             light: "github-light",
           },
-        } as ShikiConfig
+        } as ShikiConfig,
       ],
       rehypePreClass,
       [
         rehypeSectionHeadings,
         {
           sectionDataAttribute: "data-heading-id",
-        }
+        },
       ],
     ],
   },
@@ -71,15 +74,19 @@ export default defineConfig({
     format: "file",
   },
   vite: {
-    plugins: [
-      arraybuffer(),
-      tailwindcss(),
-    ],
+    plugins: [arraybuffer(), tailwindcss()],
     optimizeDeps: {
-      exclude: [
-        "@resvg/resvg-js"
-      ],
-    }
+      exclude: ["@resvg/resvg-js"],
+    },
   },
-  trailingSlash: "never"
+  trailingSlash: "never",
+
+  // https://docs.astro.build/en/reference/experimental-flags/client-prerender
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
+  experimental: {
+    clientPrerender: true,
+  },
 });

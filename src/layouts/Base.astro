@@ -4,6 +4,7 @@ import "../styles/base.less";
 import NavBar from "../components/NavBar.astro";
 import "../styles/color.less";
 import "../styles/main.less";
+import "../styles/transitions.less";
 
 import "../styles/alert.less";
 import "../styles/code-copy.less";
@@ -36,10 +37,13 @@ export interface Props {
     <NavBar class="col-span-full row-span-1" />
 
     <slot />
-  </body>
+  </body><script is:inline>
+    // @ts-check
 
-  <script is:inline>
-    window.loadTheme = function (document) {
+    /**
+     * @param {Document} document
+     */
+    function loadTheme(document) {
       const theme = (() => {
         const saved = localStorage.getItem("theme");
         if (saved !== null) {
@@ -59,16 +63,24 @@ export interface Props {
       document.documentElement.classList.add("theme-loaded");
 
       localStorage.setItem("theme", theme);
-    };
+      console.log("Swapping theme =>", theme);
+    }
 
-    document.addEventListener("astro:after-swap", () => {
-      window.loadTheme(document);
-    });
+    window.addEventListener(
+      "pagereveal",
+      (e) => {
+        console.log(e);
+        console.log("pagereveal");
+        loadTheme(document);
+      },
+      false
+    );
 
-    window.loadTheme(document);
+    loadTheme(document);
+    console.log("Loaded");
   </script>
 
-  <script src="../scripts/theme-switch.ts"/>
-  <script src="../scripts/code-copy.ts"/>
+  <script src="../scripts/theme-switch.ts"></script>
+  <script src="../scripts/code-copy.ts"></script>
   <script src="../scripts/toc.ts"></script>
 </html>

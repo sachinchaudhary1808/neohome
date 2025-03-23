@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --force",
-    "build": "astro check --force && astro build"
+    "build": "astro check --force && astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
