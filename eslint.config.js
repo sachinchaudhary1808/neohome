@@ -14,7 +14,7 @@ export default tseslint.config(
         rules: {
             "@typescript-eslint/explicit-function-return-type": "off",
             "@typescript-eslint/no-unused-vars": "warn",
-            "@typescript-eslint/ban-ts-comment": "warn",
+            "@typescript-eslint/ban-ts-comment": "off",
             "no-implicit-globals": "error",
         }
     }

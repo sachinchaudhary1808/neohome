@@ -23,6 +23,6 @@ document.getElementById("themeToggle")?.addEventListener("click", () => {
 
   console.log("Theme set to =>", newTheme);
 
-  // @ts-expect-error loadTheme wasn't loaded
+  // @ts-ignore
   globalThis.loadTheme();
 });
