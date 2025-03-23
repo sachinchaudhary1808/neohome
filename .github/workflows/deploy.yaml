@@ -29,7 +29,7 @@ jobs:
           cp -vrL "$out/lib/node_modules/neohome/dist" "${{ env.DISTDIR }}"
 
       - name: Publish
-        uses: cloudflare/wrangler-action@2.0.0
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           command: pages deploy --project-name=neohome --commit-hash "$GITHUB_SHA" "${{ env.DISTDIR }}"
