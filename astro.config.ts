@@ -84,7 +84,7 @@ export default defineConfig({
 
   // https://docs.astro.build/en/reference/experimental-flags/client-prerender
   prefetch: {
-    prefetchAll: true,
+    // prefetchAll: true,
     defaultStrategy: "viewport",
   },
   experimental: {
