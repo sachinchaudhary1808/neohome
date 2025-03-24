@@ -10,6 +10,7 @@ import IconCopy from "@tabler/icons/outline/copy.svg?raw";
 import IconCopyCheckFilled from "@tabler/icons/filled/copy-check.svg?raw";
 
 import { formatDate } from "./date";
+import { addClassToHast } from "shiki";
 
 function icon2node(raw: string): Element {
     return fromHtml(raw, {
@@ -23,11 +24,7 @@ export function rehypePreClass(): (tree: Root) => void {
     return function (tree: Root) {
         visit(tree, "element", node => {
             if (node.tagName === "pre") {
-                if (typeof node.properties.class === "string") {
-                    node.properties.class += " card"
-                } else {
-                    console.warn("pre element doesn't have class", node.properties);
-                }
+                addClassToHast(node, "card");
             }
         });
     }
