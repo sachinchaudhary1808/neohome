@@ -45,16 +45,17 @@ some text <span class="text-red-500">red</span>, you have to send a special sequ
 to indicate that the following text is red. This sequence is interpreted by the terminal, and removed from the actual text.
 
 For the terminal, every sequence starts with the 28th ascii character, that is a `char` with value `27` (`0x1B` hex) which is commonly
-known as `ESC`. This character doesn't have a represntation, so if I paste it here you will see some fallback character: ``.
+known as `ESC`. This character doesn't have a representation, so if I paste it here: ``, you may see either nothing or something similar to the fallback
+Unicode character U+241B `␛`.
 You've probably seen it written in other ways, like `\x1b` or `\e`. These are easier shorthands that use regular ASCII characters to
-represent the ``, which is cumbersome to write and not printable.
+represent the `␛`, which is cumbersome to write and not printable.
 
 Following it, you will find the character `[`, some function arguments and the function to call. You can find a longer explanation here: https://notes.burke.libbey.me/ansi-escape-codes. For color, we care about the `m` instruction.
 
 Knowing this, to set the foreground color we simply send the instruction to the terminal and then reset it:
 
 ```
-[31m(This is some red text)[0m
+␛[31m(This is some red text)␛[0m
 ```
 
 ```ansi
@@ -91,7 +92,7 @@ Simply, mark your code blocks with the `ansi` language, and paste your raw escap
 ~~~
 ```ansi
 $ printf "\e[31mHello\e[0m"
-[31mHello[0m
+␛[31mHello␛[0m
 ```
 ~~~
 
