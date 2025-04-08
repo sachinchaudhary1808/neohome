@@ -10,3 +10,4 @@ neohome-rs/index.*
 neohome-rs/*.node
 target
 /.venv
+typescript
