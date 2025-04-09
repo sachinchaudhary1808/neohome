@@ -321,7 +321,11 @@ For globally installing packages, remember that the ad-hoc `npm install -g <node
 ```nix
 pkgs.mkShell {
   packages = [
-    pkgs.nodejs
+    (pkgs.nodejs.override { enableNpm=false; }) # NodeJS without NPM
+    corepack # Corepack to pin the package manager (NPM/YARN/PNPM)
+
+    # Any other CLI tool that you would install globally with npm install -g
+    # Preferably, you move these to your package.json
     pkgs.nodePackages.typescript-language-server
   ];
 }
