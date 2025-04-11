@@ -77,14 +77,14 @@ which is constructed by joining multiple templates or "partials".
 
 As an example, this "partial" built a part of the navigation bar:
 
-```html file: "partial-logo.html"
+```html file: "partial-logo.gohtml"
 ```
 
 This example shows my main reason to move away from Hugo: **I didn't want to
 deal with this templating language**. It's just not my cup of tea.
 First of all, this is not proper HTML, and the editor tools were not good back
 then.
-But I am sure there is people that praise 
+But I am sure there is people that praise
 this templating language, even for
 other contexts -- I have personally used with
 [consul-template](https://github.com/hashicorp/consul-template). But I don't
@@ -109,7 +109,7 @@ My main criteria were:
 
 Looking into the JavaScript-based solutions can be daunting at first. The
 solution that picked my interest from the start -- and the final decision -- was Astro.
-A friend of mine was already using it, so no better reason than peer pressure. 
+A friend of mine was already using it, so no better reason than peer pressure.
 He had a good experience, so I
 decided to give it a try.
 
@@ -154,7 +154,7 @@ augment their capabilities.
 
 ## Finale
 
-To sum up: my blog used a template system that I didn't enjoy. In the process 
+To sum up: my blog used a template system that I didn't enjoy. In the process
 of rewriting it to using the
 Astro framework, I learned about basic web technologies, like HTML, CSS and JS.
 
