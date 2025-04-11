@@ -18,65 +18,65 @@ import SEO from "../components/SEO.astro";
 import type { Props as SeoProps } from "../components/SEO.astro";
 
 export interface Props {
-  seo?: SeoProps | undefined;
+    seo?: SeoProps | undefined;
 }
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="generator" content={Astro.generator} />
 
-    <slot name="head" />
+        <slot name="head" />
 
-    <SEO {...Astro.props.seo} />
-  </head>
+        <SEO {...Astro.props.seo} />
+    </head>
 
-  <body class="flex flex-col items-center">
-    <NavBar class="col-span-full row-span-1" />
+    <body class="flex flex-col items-center">
+        <NavBar class="col-span-full row-span-1" />
 
-    <slot />
-  </body><!-- Scripts: -->
-  <script is:inline>
-    // @ts-check
+        <slot />
+    </body><!-- Scripts: -->
+    <script is:inline>
+        // @ts-check
 
-    globalThis.loadTheme = function () {
-      const html = /** @type {HTMLHtmlElement} */ (
-        document.querySelector("html")
-      );
-      const storedTheme = /** @type {"dark" | "light" | null} */ (
-        localStorage.getItem("theme")
-      );
+        globalThis.loadTheme = function () {
+            const html = /** @type {HTMLHtmlElement} */ (
+                document.querySelector("html")
+            );
+            const storedTheme = /** @type {"dark" | "light" | null} */ (
+                localStorage.getItem("theme")
+            );
 
-      const prefers = (() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        } else {
-          return "light";
-        }
-      })();
+            const prefers = (() => {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    return "dark";
+                } else {
+                    return "light";
+                }
+            })();
 
-      if (prefers === "dark" && storedTheme === "light") {
-        html.style.setProperty("color-scheme", "light");
-      }
-      if (prefers === storedTheme) {
-        html.style.removeProperty("color-scheme");
-      }
-      if (prefers === "light" && storedTheme === "dark") {
-        html.style.setProperty("color-scheme", "dark");
-      }
-    };
+            if (prefers === "dark" && storedTheme === "light") {
+                html.style.setProperty("color-scheme", "light");
+            }
+            if (prefers === storedTheme) {
+                html.style.removeProperty("color-scheme");
+            }
+            if (prefers === "light" && storedTheme === "dark") {
+                html.style.setProperty("color-scheme", "dark");
+            }
+        };
 
-    window.addEventListener("pagereveal", (e) => {
-      console.log("pagereveal triggered ", e);
-      globalThis.loadTheme();
-    });
+        window.addEventListener("pagereveal", (e) => {
+            console.log("pagereveal triggered ", e);
+            globalThis.loadTheme();
+        });
 
-    globalThis.loadTheme();
-  </script>
+        globalThis.loadTheme();
+    </script>
 
-  <script src="../scripts/theme-switch.ts"></script>
-  <script src="../scripts/code-copy.ts"></script>
-  <script src="../scripts/toc.ts"></script>
+    <script src="../scripts/theme-switch.ts"></script>
+    <script src="../scripts/code-copy.ts"></script>
+    <script src="../scripts/toc.ts"></script>
 </html>

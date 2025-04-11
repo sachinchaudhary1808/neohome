@@ -1,8 +1,8 @@
 ---
-import type { MarkdownHeading } from 'astro'
+import type { MarkdownHeading } from "astro";
 
 interface Props {
-    headings: MarkdownHeading[]
+    headings: MarkdownHeading[];
 }
 
 const { headings } = Astro.props;
@@ -10,24 +10,23 @@ const { headings } = Astro.props;
 
 <aside id="sidebar" class="card">
     <div class="mb-3 flex justify-between items-center">
-    <h2>Jump to</h2>
+        <h2>Jump to</h2>
     </div>
 
     <ul id="toc">
-    {
-        headings.map((heading) => {
-        return (
-            <li
-            class=`depth-${heading.depth}`
-            data-slug={heading.slug}
-            >
-            <a href={`#${heading.slug}`}>{heading.text}</a>
-            </li>
-        );
-        })
-    }
+        {
+            headings.map((heading) => {
+                return (
+                    <li
+                        class={`depth-${heading.depth}`}
+                        data-slug={heading.slug}
+                    >
+                        <a href={`#${heading.slug}`}>{heading.text}</a>
+                    </li>
+                );
+            })
+        }
     </ul>
-
 </aside>
 
 <style lang="less">
@@ -79,41 +78,43 @@ const { headings } = Astro.props;
     // }
 
     #sidebar {
-    //   display: none; // starting
-    //   position: fixed;
-    //   width: 300px;
-    //   min-height: 100%;
-      overflow-wrap: break-word;
-    //   overflow-y: auto;
-      padding: 1rem;
+        //   display: none; // starting
+        //   position: fixed;
+        //   width: 300px;
+        //   min-height: 100%;
+        overflow-wrap: break-word;
+        //   overflow-y: auto;
+        padding: 1rem;
 
-      font-size: 0.9rem;
-      font-weight: 500;
+        font-size: 0.9rem;
+        font-weight: 500;
 
-      background-color: light-dark( rgb(227, 227, 227), rgb(28, 28, 28));
+        background-color: light-dark(rgb(227, 227, 227), rgb(28, 28, 28));
 
-    //   @media (min-width: @sidebar-thr) {
+        //   @media (min-width: @sidebar-thr) {
         display: block;
-    //   }
+        //   }
 
-      border-radius: 0;
-      border-top: 0;
-      border-left: 0;
-      border-bottom: 0;
+        border-radius: 0;
+        border-top: 0;
+        border-left: 0;
+        border-bottom: 0;
 
-      // position: relative;
+        // position: relative;
     }
 </style>
 
 <script>
     const sidebar = document.getElementById("sidebar");
     if (sidebar !== null) {
-        document.getElementById("sidebar-button")?.addEventListener("click", () => {
-            if (sidebar.classList.contains("hidden")) {
-                sidebar.classList.remove("hidden")
-            } else {
-                sidebar.classList.add("hidden");
-            }
-        })
+        document
+            .getElementById("sidebar-button")
+            ?.addEventListener("click", () => {
+                if (sidebar.classList.contains("hidden")) {
+                    sidebar.classList.remove("hidden");
+                } else {
+                    sidebar.classList.add("hidden");
+                }
+            });
     }
 </script>

@@ -3,34 +3,34 @@ name: Deploy
 concurrency: deploy
 
 on:
-  push:
-    branches:
-      - astro
+    push:
+        branches:
+            - astro
 
 env:
-  DISTDIR: ./dist
+    DISTDIR: ./dist
 
 jobs:
-  main:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📦 Install Nix
-        uses: cachix/install-nix-action@master
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-          extra_nix_config: |
-            extra-experimental-features = nix-command flakes pipe-operators
+    main:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 📦 Install Nix
+              uses: cachix/install-nix-action@master
+              with:
+                  github_access_token: ${{ secrets.GITHUB_TOKEN }}
+                  extra_nix_config: |
+                      extra-experimental-features = nix-command flakes pipe-operators
 
-      - name: 🛠️ Checkout
-        uses: actions/checkout@main
+            - name: 🛠️ Checkout
+              uses: actions/checkout@main
 
-      - name: 🔨 Build
-        run: |
-          out="$(nix build .^out --print-out-paths --no-link --print-build-logs)"
-          cp -vrL "$out/lib/node_modules/neohome/dist" "${{ env.DISTDIR }}"
+            - name: 🔨 Build
+              run: |
+                  out="$(nix build .^out --print-out-paths --no-link --print-build-logs)"
+                  cp -vrL "$out/lib/node_modules/neohome/dist" "${{ env.DISTDIR }}"
 
-      - name: 🚀 Publish
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          command: pages deploy --project-name=neohome --commit-hash "$GITHUB_SHA" "${{ env.DISTDIR }}"
+            - name: 🚀 Publish
+              uses: cloudflare/wrangler-action@v3
+              with:
+                  apiToken: ${{ secrets.CF_API_TOKEN }}
+                  command: pages deploy --project-name=neohome --commit-hash "$GITHUB_SHA" "${{ env.DISTDIR }}"

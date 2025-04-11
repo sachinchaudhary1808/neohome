@@ -2,87 +2,102 @@
     Dumped from https://www.npmjs.com/package/remark-github-blockquote-alert
 */
 
-
 .markdown-alert {
-  --color-border-default: light-dark(#d0d7de, #30363d);
-  --color-accent-fg: light-dark(#0969da, #58a6ff);
-  --color-accent-emphasis: light-dark(#0969da, #1f6feb);
-  --color-danger-fg: light-dark(#d1242f, #f85149);
-  --color-danger-emphasis: light-dark(#cf222e, #da3633);
-  --color-attention-fg: light-dark(#9a6700, #d29922);
-  --color-attention-emphasis: light-dark(#9a6700, #9e6a03);
-  --color-done-fg: light-dark(#8250df, #a371f7);
-  --color-done-emphasis: light-dark(#8250df, #8957e5);
-  --color-success-fg: light-dark(#1a7f37, #3fb950);
-  --color-success-emphasis: light-dark(#1f883d, #238636);
+    --color-border-default: light-dark(#d0d7de, #30363d);
+    --color-accent-fg: light-dark(#0969da, #58a6ff);
+    --color-accent-emphasis: light-dark(#0969da, #1f6feb);
+    --color-danger-fg: light-dark(#d1242f, #f85149);
+    --color-danger-emphasis: light-dark(#cf222e, #da3633);
+    --color-attention-fg: light-dark(#9a6700, #d29922);
+    --color-attention-emphasis: light-dark(#9a6700, #9e6a03);
+    --color-done-fg: light-dark(#8250df, #a371f7);
+    --color-done-emphasis: light-dark(#8250df, #8957e5);
+    --color-success-fg: light-dark(#1a7f37, #3fb950);
+    --color-success-emphasis: light-dark(#1f883d, #238636);
 }
 
 .markdown-alert {
-  border-left: .25em solid var(--borderColor-default, var(--color-border-default));
-  color: inherit;
-  margin-bottom: 16px;
-  padding: .5rem 1em
+    border-left: 0.25em solid
+        var(--borderColor-default, var(--color-border-default));
+    color: inherit;
+    margin-bottom: 16px;
+    padding: 0.5rem 1em;
 }
 
-.markdown-alert>:last-child {
-  margin-bottom: 0 !important
+.markdown-alert > :last-child {
+    margin-bottom: 0 !important;
 }
 
 .markdown-alert .markdown-alert-title {
-  align-items: center;
-  display: flex;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
 }
 
 .markdown-alert .markdown-alert-title svg.octicon {
-  margin-right: 8px !important;
-  margin-right: var(--base-size-8, 8px) !important;
-  fill: currentColor;
+    margin-right: 8px !important;
+    margin-right: var(--base-size-8, 8px) !important;
+    fill: currentColor;
 }
 
 .markdown-alert.markdown-alert-note {
-  border-left-color: var(--borderColor-accent-emphasis, var(--color-accent-emphasis))
+    border-left-color: var(
+        --borderColor-accent-emphasis,
+        var(--color-accent-emphasis)
+    );
 }
 
 .markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-accent-fg);
-  color: var(--fgColor-accent, var(--color-accent-fg))
+    color: var(--color-accent-fg);
+    color: var(--fgColor-accent, var(--color-accent-fg));
 }
 
 .markdown-alert.markdown-alert-tip {
-  border-left-color: var(--borderColor-success-emphasis, var(--color-success-emphasis))
+    border-left-color: var(
+        --borderColor-success-emphasis,
+        var(--color-success-emphasis)
+    );
 }
 
 .markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-success-fg);
-  color: var(--fgColor-success, var(--color-success-fg))
+    color: var(--color-success-fg);
+    color: var(--fgColor-success, var(--color-success-fg));
 }
 
 .markdown-alert.markdown-alert-important {
-  border-left-color: var(--borderColor-done-emphasis, var(--color-done-emphasis))
+    border-left-color: var(
+        --borderColor-done-emphasis,
+        var(--color-done-emphasis)
+    );
 }
 
 .markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-done-fg);
-  color: var(--fgColor-done, var(--color-done-fg))
+    color: var(--color-done-fg);
+    color: var(--fgColor-done, var(--color-done-fg));
 }
 
 .markdown-alert.markdown-alert-warning {
-  border-left-color: var(--borderColor-attention-emphasis, var(--color-attention-emphasis))
+    border-left-color: var(
+        --borderColor-attention-emphasis,
+        var(--color-attention-emphasis)
+    );
 }
 
 .markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-attention-fg);
-  color: var(--fgColor-attention, var(--color-attention-fg))
+    color: var(--color-attention-fg);
+    color: var(--fgColor-attention, var(--color-attention-fg));
 }
 
 .markdown-alert.markdown-alert-caution {
-  border-left-color: var(--borderColor-danger-emphasis, var(--color-danger-emphasis))
+    border-left-color: var(
+        --borderColor-danger-emphasis,
+        var(--color-danger-emphasis)
+    );
 }
 
 .markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-danger-fg);
-  color: var(--fgColor-danger, var(--color-danger-fg))
+    color: var(--color-danger-fg);
+    color: var(--fgColor-danger, var(--color-danger-fg));
 }

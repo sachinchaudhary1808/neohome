@@ -53,7 +53,10 @@ a {
 }
 
 .card {
-    background-color: light-dark(rgb(241, 241, 241), rgb(0, 0, 0)) !important; // for astro-code
+    background-color: light-dark(
+        rgb(241, 241, 241),
+        rgb(0, 0, 0)
+    ) !important; // for astro-code
     border: 1px solid var(--elem-neutral);
     border-radius: 10px;
 
@@ -66,7 +69,8 @@ a {
     transition: box-shadow ease-out 100ms;
 
     &:hover {
-        box-shadow: 0 4px 30px light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+        box-shadow: 0 4px 30px
+            light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
     }
 }
 

@@ -1,9 +1,10 @@
 export async function GET(): Promise<Response> {
-
-    const resp = new Response(`User-agent: *
+    const resp = new Response(
+        `User-agent: *
 Allow: /
 
-Sitemap: ${import.meta.env.SITE}/sitemap.xml`.trim());
+Sitemap: ${import.meta.env.SITE}/sitemap.xml`.trim(),
+    );
 
     resp.headers.set("Content-Type", "text/plain; charset=utf-8");
 
