@@ -1,5 +1,4 @@
 **/*.md
 **/*.mdx
-**/*.d.ts
 /package-lock.json
 /flake.lock
