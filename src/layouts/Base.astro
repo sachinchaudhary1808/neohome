@@ -34,7 +34,15 @@ import font800 from "@fontsource/geist-sans/files/geist-sans-latin-800-normal.wo
         <meta name="generator" content={Astro.generator} />
         <!-- Font preload -->
         {
-            [font400, font500, font600, font800].map(font => <link rel="preload" as="font" type="font/woff2" href={font} crossorigin="anonymous"> )
+            [font400, font500, font600, font800].map((font) => (
+                <link
+                    rel="preload"
+                    as="font"
+                    type="font/woff2"
+                    href={font}
+                    crossorigin="anonymous"
+                />
+            ))
         }
 
         <slot name="head" />

@@ -3,11 +3,9 @@ import { Image } from "astro:assets";
 
 import author from "./author.jpg";
 
-import {
-    IconBrandLinkedin,
-    IconBrandGithub,
-    IconMail,
-} from "@tabler/icons-react";
+import IconBrandLinkedin from "@tabler/icons/outline/brand-linkedin.svg";
+import IconBrandGithub from "@tabler/icons/outline/brand-github.svg";
+import IconMail from "@tabler/icons/outline/mail.svg";
 ---
 
 <div id="profile">
@@ -45,13 +43,13 @@ import {
         </span>
     </div>
     <a class="card" href="https://github.com/viperML">
-        <IconBrandGithub className="bento-icon" />
+        <IconBrandGithub class="bento-icon" />
     </a>
     <a class="card" href="https://linkedin.com/in/ayatsfer">
-        <IconBrandLinkedin className="bento-icon" />
+        <IconBrandLinkedin class="bento-icon" />
     </a>
     <a class="card" href="mailto:ayatsfer+neohome@gmail.com">
-        <IconMail className="bento-icon" />
+        <IconMail class="bento-icon" />
     </a>
 </div>
 

@@ -27,7 +27,10 @@ const seoLinks = [
 const defaultDescription = "This is my personal blog.";
 const finalDescription = props.description ?? defaultDescription;
 
-import { WIDTH, HEIGHT } from "../card";
+// import { WIDTH, HEIGHT } from "../card";
+const WIDTH = 1200;
+// FIXME
+const HEIGHT = 630;
 
 function normURL(url: URL): string {
     const u = new URL(url);

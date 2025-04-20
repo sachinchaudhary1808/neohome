@@ -22,7 +22,6 @@ const header = '<?xml version="1.0" encoding="UTF-8"?>';
             posts.map(async (post) => {
                 const url = new URL(`blog/${post.slug}`, Astro.url.origin);
                 const date = post.data.pubDate.toUTCString();
-                const { Content } = await post.render();
                 return (
                     <item>
                         <title>{post.data.title}</title>
@@ -31,7 +30,7 @@ const header = '<?xml version="1.0" encoding="UTF-8"?>';
                         <pubDate>{date}</pubDate>
                         <description>
                             <Fragment set:html={"<![CDATA["} />
-                            <Content />
+                            {post.data.summary}
                             <Fragment set:html={"]]>"} />
                         </description>
                     </item>
