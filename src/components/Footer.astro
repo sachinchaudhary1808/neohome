@@ -78,9 +78,41 @@ const iconSize = 30;
             <IconBrightness height={iconSize} width={iconSize} />
         </button>
     </div>
+
+    <div class="inline footer-users">
+        <span id="activeUsers">0</span> Active Users
+    </div>
 </footer>
 
 <style lang="less">
+    .footer-users {
+        @media (max-width: 768px) {
+            grid-row: 3;
+        }
+    }
+
+    // #activeUsers {
+    //     position: relative;
+    // }
+
+    #activeUsers::before {
+        // position: absolute;
+        content: "";
+        display: inline-block;
+        background-color: var(--color-red-400);
+        width: 10px;
+        height: 10px;
+        // top: 50%;
+        // left: 0%;
+        border-radius: 100%;
+        // transform: translate(0, -50%);
+        margin-right: 4px;
+    }
+
+    #activeUsers.successful::before {
+        background-color: var(--color-green-400);
+    }
+
     footer {
         margin-top: 3rem;
         display: grid;
@@ -146,3 +178,20 @@ const iconSize = 30;
         }
     }
 </style>
+
+<script>
+    const activeUsersElem = document.getElementById("activeUsers");
+    if (activeUsersElem === null) {
+        throw new Error("Active users element not found");
+    }
+
+    interface Response {
+        activeUsers: number;
+    }
+
+    const url = new URL("https://shiva.ayats.org/user-count");
+    const resp: Response = await (await fetch(url)).json();
+
+    activeUsersElem.innerText = String(resp.activeUsers);
+    activeUsersElem.classList = "successful";
+</script>
