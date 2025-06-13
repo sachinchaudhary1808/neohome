@@ -327,7 +327,7 @@ name.
 ```nix
 plugins = [
   (vimUtils.buildVimPlugin {
-    name = "telescope.nvim"
+    name = "telescope.nvim";
     src = fetchFromGitHub {
       owner = "nvim-telescope";
       repo = "telescope.nvim";
